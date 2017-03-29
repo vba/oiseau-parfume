@@ -9,7 +9,7 @@ class DatesProviderImplTest extends Specification {
     def "It should get begin and end dates for month" () {
         given:
         LocalDateProvider.instance.provide = {LocalDate.of(2017, 02, 15)}
-        final sut = DatesProviderImpl.instance
+        final sut = new DatesProviderImpl()
         final expected
 
         when:
@@ -23,7 +23,7 @@ class DatesProviderImplTest extends Specification {
     def "It should generate a complete month for an interval" () {
         given:
         LocalDateProvider.instance.provide = {LocalDate.of(2017, 02, 15)}
-        final sut = DatesProviderImpl.instance
+        final sut = new DatesProviderImpl()
         final List<LocalDate> expected
 
         when:

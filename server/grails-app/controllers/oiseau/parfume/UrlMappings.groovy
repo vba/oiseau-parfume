@@ -3,6 +3,7 @@ package oiseau.parfume
 class UrlMappings {
 
     static mappings = {
+        get "/currency"(controller: 'currency', action: 'index')
         delete "/$controller/$id(.$format)?"(action:"delete")
         get "/$controller(.$format)?"(action:"index")
         get "/$controller/$id(.$format)?"(action:"show")

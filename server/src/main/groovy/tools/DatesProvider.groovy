@@ -15,7 +15,6 @@ class LocalDateProvider {
     Closure<LocalDate> provide = { LocalDate.now() }
 }
 
-@Singleton
 class DatesProviderImpl implements DatesProvider {
 
     @PackageScope
