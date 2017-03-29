@@ -29,6 +29,8 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-jackson:2.2.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
     compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    compile 'org.jsoup:jsoup:1.10.2'
+    compile 'com.google.guava:guava:21.0'
 
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"

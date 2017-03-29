@@ -1,5 +1,6 @@
 package tools
 
+import grails.plugin.cache.Cacheable
 import groovy.transform.PackageScope
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
@@ -24,19 +25,11 @@ interface CurrencyClient {
 
 class CurrencyClientImpl implements CurrencyClient {
 
-    private final CacheableHttpClient cacheableHttpClient
-
-    CurrencyClientImpl(CacheableHttpClient cacheableHttpClient) {
-        this.cacheableHttpClient = cacheableHttpClient
-        assert cacheableHttpClient != null : "cacheableHttpClient cannot be a null"
-    }
-
     private @Lazy CbrClient cbrClient = {
         Retrofit retrofit = new Retrofit.Builder()
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .addConverterFactory(ScalarsConverterFactory.create())
             .baseUrl("https://www.cbr.ru/currency_base/")
-            .client(cacheableHttpClient.get())
             .build();
 
         retrofit.create(CbrClient)

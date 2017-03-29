@@ -1,6 +1,8 @@
-import tools.CacheableHttpClient
+import tools.PagesCacheManager
 import tools.CurrencyClientImpl
+
 import tools.DatesProviderImpl
+import tools.HtmlParserImpl
 
 // Place your Spring DSL code here
 beans = {
@@ -10,5 +12,6 @@ beans = {
 //        bookService = ref("bookService")
     }
     datesProvider(DatesProviderImpl) {}
-    cacheableHttpClient(CacheableHttpClient) {}
+    htmlParser(HtmlParserImpl) {}
+    pagesCacheManager(PagesCacheManager) {}
 }
