@@ -1,10 +1,10 @@
-package tools
+package fr.oiseau.parfume.crawlers
 
 import spock.lang.Specification
 
 import java.time.LocalDate
 
-class HtmlParserSpec extends Specification {
+class HtmlCrawlerSpec extends Specification {
     final String markup = '''
 <table class="data">
     <tbody>
@@ -49,7 +49,7 @@ class HtmlParserSpec extends Specification {
 
     def "It should find currencies in expected html stream" () {
         given:
-        final sut = new HtmlParserImpl()
+        final sut = new HtmlCrawlerImpl()
         final expected
 
         when:

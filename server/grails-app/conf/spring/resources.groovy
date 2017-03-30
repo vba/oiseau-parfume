@@ -1,8 +1,8 @@
-import tools.PagesCacheManager
-import tools.CurrencyClientImpl
+import fr.oiseau.parfume.cache.PagesCacheManager
+import fr.oiseau.parfume.clients.CurrencyClientImpl
 
-import tools.DatesProviderImpl
-import tools.HtmlParserImpl
+import fr.oiseau.parfume.providers.DatesProviderImpl
+import fr.oiseau.parfume.crawlers.HtmlCrawlerImpl
 
 // Place your Spring DSL code here
 beans = {
@@ -12,6 +12,6 @@ beans = {
 //        bookService = ref("bookService")
     }
     datesProvider(DatesProviderImpl) {}
-    htmlParser(HtmlParserImpl) {}
+    htmlParser(HtmlCrawlerImpl) {}
     pagesCacheManager(PagesCacheManager) {}
 }

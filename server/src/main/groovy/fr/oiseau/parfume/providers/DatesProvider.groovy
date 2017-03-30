@@ -1,7 +1,6 @@
-package tools
+package fr.oiseau.parfume.providers
 
 import groovy.transform.PackageScope
-import org.codehaus.groovy.runtime.InvokerHelper
 
 import java.time.LocalDate
 

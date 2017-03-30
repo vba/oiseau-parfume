@@ -1,4 +1,4 @@
-package tools
+package fr.oiseau.parfume.cache
 
 import com.google.common.cache.Cache
 import com.google.common.cache.CacheBuilder

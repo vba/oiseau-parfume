@@ -1,14 +1,13 @@
 package oiseau.parfume
 
-import dto.CurrencyDto
 import grails.rx.web.RxController
 import org.springframework.beans.factory.annotation.Autowired
 import rx.Observable
 import rx.schedulers.Schedulers
-import tools.CurrencyClient
-import tools.DatesProvider
-import tools.HtmlParser
-import tools.PagesCacheManager
+import fr.oiseau.parfume.clients.CurrencyClient
+import fr.oiseau.parfume.providers.DatesProvider
+import fr.oiseau.parfume.crawlers.HtmlCrawler
+import fr.oiseau.parfume.cache.PagesCacheManager
 
 import java.time.LocalDate
 
@@ -16,13 +15,13 @@ class CurrencyController implements RxController {
 
     private final CurrencyClient currencyClient
     private final DatesProvider datesProvider
-    private final HtmlParser htmlParser
+    private final HtmlCrawler htmlParser
     private final PagesCacheManager pagesCacheManager
 
     @Autowired
     CurrencyController(DatesProvider datesProvider,
                        CurrencyClient currencyClient,
-                       HtmlParser htmlParser,
+                       HtmlCrawler htmlParser,
                        PagesCacheManager pagesCacheManager) {
 
         this.pagesCacheManager = pagesCacheManager

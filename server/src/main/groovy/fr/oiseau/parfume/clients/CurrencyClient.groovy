@@ -1,10 +1,8 @@
-package tools
+package fr.oiseau.parfume.clients
 
-import grails.plugin.cache.Cacheable
 import groovy.transform.PackageScope
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
-import retrofit2.converter.jackson.JacksonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
