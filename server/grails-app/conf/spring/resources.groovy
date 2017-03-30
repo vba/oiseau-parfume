@@ -3,6 +3,7 @@ import fr.oiseau.parfume.clients.CurrencyClientImpl
 
 import fr.oiseau.parfume.providers.DatesProviderImpl
 import fr.oiseau.parfume.crawlers.HtmlCrawlerImpl
+import fr.oiseau.parfume.transformers.PageGettingTransformer
 
 // Place your Spring DSL code here
 beans = {
@@ -14,4 +15,5 @@ beans = {
     datesProvider(DatesProviderImpl) {}
     htmlParser(HtmlCrawlerImpl) {}
     pagesCacheManager(PagesCacheManager) {}
+    pageGettingTransformer(PageGettingTransformer) {}
 }
