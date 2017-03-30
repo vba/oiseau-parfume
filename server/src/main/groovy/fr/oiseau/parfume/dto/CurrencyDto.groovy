@@ -9,5 +9,5 @@ class CurrencyDto {
     String date
     Integer units
     String label
-    BigDecimal value
+    String value
 }

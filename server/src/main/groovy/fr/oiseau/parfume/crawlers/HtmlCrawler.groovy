@@ -40,7 +40,7 @@ class HtmlCrawlerImpl implements HtmlCrawler {
         final selected = document.select("table.data tr:contains($label) > td")
 
         new CurrencyDto(label: label,
-                        value: decimalFormat.parse(selected.last().text()) as BigDecimal,
+                        value: (decimalFormat.parse(selected.last().text()) as BigDecimal).toString(),
                         units: new Integer(selected[2].text()),
                         date: date.format(dateTimeFormatter))
     }

@@ -60,9 +60,9 @@ class HtmlCrawlerSpec extends Specification {
         expected?.second != null
         expected.first.label.toLowerCase() == 'usd'
         expected.first.units == 1
-        expected.first.value == new BigDecimal('58.9540')
+        expected.first.value == '58.9540'
         expected.second.label.toLowerCase() == 'eur'
         expected.second.units == 1
-        expected.second.value == new BigDecimal('62.7447')
+        expected.second.value == '62.7447'
     }
 }

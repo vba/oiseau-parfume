@@ -8,7 +8,7 @@ class BootStrap {
         currencyService
             .currencyForMonth
             .subscribe({}, {}, {
-                println("Currencies warmed, it must work faster now")
+                println("Currencies were warmed, it must work faster now")
             })
     }
 
