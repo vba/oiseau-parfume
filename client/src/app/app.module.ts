@@ -9,6 +9,7 @@ import {AppComponent} from './app.component';
 import {NavComponent} from './nav/nav.component';
 import {NavService} from './nav/nav.service';
 import {AppRoutingModule} from "./app-routing.module";
+import {IndexService} from "./index/index.service";
 
 @NgModule({
     declarations: [
@@ -23,7 +24,7 @@ import {AppRoutingModule} from "./app-routing.module";
         AppRoutingModule,
         NgbModule.forRoot()
     ],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, NavService],
+    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, NavService, IndexService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
