@@ -24,7 +24,7 @@ import {IndexService} from "./index/index.service";
         AppRoutingModule,
         NgbModule.forRoot()
     ],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, NavService, IndexService],
+    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},  IndexService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

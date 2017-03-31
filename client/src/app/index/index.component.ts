@@ -12,17 +12,18 @@ type DtoMap = Map<string, any>
 })
 export class IndexComponent implements OnInit {
 
-    private readonly _initialMaxMinMap: DtoMap = Map.of({maxEur: 0, maxUsd: 0, minEur: 0, minUsd: 0});
+    private readonly _initialMaxMinMap: DtoMap = Map({maxEur: 0, maxUsd: 0, minEur: 0, minUsd: 0});
 
-    maxMinMap: DtoMap = Map.of({});
+    maxMinMap: DtoMap = Map({});
 
-    controllers: Array<any>;
+    private currencies: DtoMap[] = [];
 
     constructor(private indexService: IndexService, private router: Router) {
     }
 
     ngOnInit(): void {
         this.indexService.getCurrencies().subscribe(currencies  => {
+            this.currencies = currencies;
             this.maxMinMap = currencies.reduce((agg, x) => {
                 const eur = this.parseCurrencyValue(x.get('eur'));
                 const usd = this.parseCurrencyValue(x.get('usd'));
@@ -33,8 +34,6 @@ export class IndexComponent implements OnInit {
                     .set('minUsd', agg.get('minUsd') > usd ? usd : agg.get('minUsd'));
             }, this._initialMaxMinMap);
 
-            debugger
-            this.controllers = [];
             /*
             currencies.controllers.sort((a: any, b: any) => {
                 if (a.name < b.name) {
@@ -49,7 +48,7 @@ export class IndexComponent implements OnInit {
         });
     }
 
-    private parseCurrencyValue(curr: any) {
+    private parseCurrencyValue(curr: any): number {
         return curr.value * 1;
     }
 

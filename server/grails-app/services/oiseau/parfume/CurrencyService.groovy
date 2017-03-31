@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import rx.Observable
 
 import static fr.oiseau.parfume.ArgumentPreconditions.notNull
-import static fr.oiseau.parfume.ArgumentPreconditions.notNull
-import static fr.oiseau.parfume.ArgumentPreconditions.notNull
 
 class CurrencyService {
     private final DatesProvider datesProvider
@@ -30,7 +28,7 @@ class CurrencyService {
             .from(datesProvider.provide())
             .compose(pageGettingTransformer)
             .map({ htmlParser.findCurrencies(it.first, it.second as String) })
-            .map({ [usd: it.first, eur: it.second] })
+            .map({ it.toMap() })
             .reduce([].asImmutable(), { agg, x -> agg + x })
     }
 }

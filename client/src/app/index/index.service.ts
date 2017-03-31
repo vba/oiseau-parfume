@@ -19,7 +19,9 @@ export class IndexService {
     getCurrencies(): Observable<Currencies> {
         if (!this.currencies) {
             this.currencies = this.http.get('http://localhost:8080/currency')
-                .map((res: Response) => <Currencies>res.json())
+                .map((res: Response) => {
+                    return <Currencies>res.json()
+                })
                 .publishReplay(1)
                 .refCount();
         }

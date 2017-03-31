@@ -6,8 +6,6 @@ import jdk.nashorn.internal.ir.annotations.Immutable
 @Immutable
 @TupleConstructor
 class CurrencyDto {
-    String date
     Integer units
-    String label
     String value
 }

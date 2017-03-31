@@ -5,10 +5,29 @@
 </ul>
 <div class="tab-content" id="myTabContent">
     <div aria-labelledby="tab1-tab" id="tab1" class="tab-pane fade in active" role="tabpanel">
-        <p>TO BE DONE</p>
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Euro</th>
+                    <th>US Dollar</th>
+                </tr>
+                </thead>
+                <tr *ngFor="let x of currencies">
+                    <td>{{x.date}}</td>
+                    <td>{{x.eur.value}}₽ / {{x.eur.units}}€</td>
+                    <td>{{x.usd.value}}₽ / {{x.eur.units}}$</td>
+                    <!--<div [ngSwitch]="hasRoute(c.logicalPropertyName)">-->
+                        <!--<a *ngSwitchCase="true" [routerLink]="'/' + c.logicalPropertyName">{{c.name}}</a>-->
+                        <!--<a *ngSwitchCase="false" [href]="'/' + c.logicalPropertyName">{{c.name}}</a>-->
+                    <!--</div>-->
+                </tr>
+            </table>
+        </div>
     </div>
     <div aria-labelledby="tab2-tab" id="tab2" class="tab-pane" role="tabpanel">
-        <p>TO BE DONE</p>
+        <p>TO BE DONE 2</p>
     </div>
 </div>
 <!--

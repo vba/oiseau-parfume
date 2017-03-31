@@ -56,13 +56,11 @@ class HtmlCrawlerSpec extends Specification {
         expected = sut.findCurrencies(LocalDate.now(), markup)
 
         then:
-        expected?.first != null
-        expected?.second != null
-        expected.first.label.toLowerCase() == 'usd'
-        expected.first.units == 1
-        expected.first.value == '58.9540'
-        expected.second.label.toLowerCase() == 'eur'
-        expected.second.units == 1
-        expected.second.value == '62.7447'
+        expected?.eur != null
+        expected?.usd != null
+        expected.eur.units == 1
+        expected.usd.value == '58.9540'
+        expected.usd.units == 1
+        expected.eur.value == '62.7447'
     }
 }
