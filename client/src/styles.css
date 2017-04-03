@@ -3,6 +3,36 @@
 }
 
 
+.sources {
+    padding: .6em;
+}
+
+div.btn-group {
+    padding: .4em;
+}
+
+.nav-tabs a label {
+    cursor: pointer;
+}
+
+.table tbody tr > td.max-price {
+    color: #30a826 !important;
+    font-weight: bold;
+}
+
+.table tbody tr > td.min-price {
+    color: #f21b31 !important;
+    font-weight: bold;
+}
+
+#tabHeaders {
+    margin: .3em;
+}
+
+#tabContent {
+    margin: .4em;
+}
+
 @media (max-width: 128px) {
 
     .nav.nav-tabs.bs-adaptive-tabs {
@@ -67,6 +97,4 @@
     .nav.nav-tabs.bs-adaptive-tabs li.active a label {
         visibility: visible;
     }
-
-
 }

@@ -23,9 +23,9 @@ class CurrencyService {
         this.datesProvider = notNull(datesProvider)
     }
 
-    def getCurrencyForMonth () {
+    def getCurrencyForMonth (Integer monthsToAdd = 0) {
         Observable
-            .from(datesProvider.provide())
+            .from(datesProvider.provide(monthsToAdd))
             .compose(pageGettingTransformer)
             .map({ htmlParser.findCurrencies(it.first, it.second as String) })
             .map({ it.toMap() })

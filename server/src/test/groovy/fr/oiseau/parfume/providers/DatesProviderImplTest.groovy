@@ -1,29 +1,28 @@
 package fr.oiseau.parfume.providers
 
-import fr.oiseau.parfume.providers.DatesProviderImpl
 import spock.lang.Specification
 
 import java.time.LocalDate
 
 class DatesProviderImplTest extends Specification {
 
-    def "It should get begin and end dates for month" () {
+    def "It should get begin and end dates for entire month" () {
         given:
-        fr.oiseau.parfume.providers.LocalDateProvider.instance.provide = {LocalDate.of(2017, 02, 15)}
+        LocalDateProvider.instance.provide = {LocalDate.of(2017, 02, 28)}
         final sut = new DatesProviderImpl()
         final expected
 
         when:
-        expected = sut.' begin and end dates for month'
+        expected = sut.getFirstAndLastDays(0)
 
         then:
-        expected.first == 1
-        expected.second == 28
+        expected.first.dayOfMonth == 1
+        expected.second.dayOfMonth == 28
     }
 
     def "It should generate a complete month for an interval" () {
         given:
-        fr.oiseau.parfume.providers.LocalDateProvider.instance.provide = {LocalDate.of(2017, 02, 15)}
+        LocalDateProvider.instance.provide = {LocalDate.of(2017, 02, 15)}
         final sut = new DatesProviderImpl()
         final List<LocalDate> expected
 

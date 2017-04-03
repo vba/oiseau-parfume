@@ -6,33 +6,36 @@ import java.time.LocalDate
 
 interface DatesProvider {
     List<LocalDate> provide()
+    List<LocalDate> provide(Integer monthsToAdd)
 }
 
 @Singleton
 @PackageScope
 class LocalDateProvider {
-    Closure<LocalDate> provide = { LocalDate.now() }
+    Closure<LocalDate> provide = { Integer x = 0 -> LocalDate.now().plusMonths(x) }
 }
 
 class DatesProviderImpl implements DatesProvider {
 
     @PackageScope
-    Tuple2<Integer, Integer> "get begin and end dates for month" () {
-        final now = LocalDateProvider.instance.provide()
-        new Tuple2<Integer, Integer> (
-            now.withDayOfMonth(1).dayOfMonth,
-            now.plusMonths(1).withDayOfMonth(1).minusDays(1).dayOfMonth
-        )
-    }
+        getFirstAndLastDays = { Integer x ->
+            final now = LocalDateProvider.instance.provide(x)
+            new Tuple2<LocalDate, LocalDate>(
+                now.withDayOfMonth(1),
+                now.plusMonths(1)
+                    .withDayOfMonth(1)
+                    .minusDays(1)
+            )
+        }
 
     @PackageScope
-    List<LocalDate> "generate dates interval"(Tuple2<Integer, Integer> days) {
-        final now = LocalDateProvider.instance.provide()
-        (days.first .. days.second).collect{ LocalDate.of(now.year, now.month, it) }
-    }
+        fillDatesInterval = { Tuple2<LocalDate, LocalDate> days ->
+            (days.first.dayOfMonth..days.second.dayOfMonth)
+                .collect { LocalDate.of(days.first.year, days.first.month, it as Integer) }
+        }
 
     @Override
-    List<LocalDate> provide() {
-        (this.&"get begin and end dates for month" >> this.&"generate dates interval") ()
+    List<LocalDate> provide(Integer monthsToAdd = 0) {
+        (getFirstAndLastDays.curry(monthsToAdd) >> fillDatesInterval) ()
     }
 }

@@ -11,20 +11,15 @@ type Currencies = Map<string, any>[]
 @Injectable()
 export class IndexService {
 
-    private currencies: Observable<Currencies>;
-
     constructor(private http: Http) {
     }
 
-    getCurrencies(): Observable<Currencies> {
-        if (!this.currencies) {
-            this.currencies = this.http.get('http://localhost:8080/currency')
-                .map((res: Response) => {
-                    return <Currencies>res.json()
-                })
-                .publishReplay(1)
-                .refCount();
-        }
-        return this.currencies;
+    getCurrencies(monthsToAdd: string = '0'): Observable<Currencies> {
+        return this.http.get('http://localhost:8080/currency?monthsToAdd='+monthsToAdd)
+            .map((res: Response) => {
+                return (<any[]>res.json()).map(x => Map(x))
+            })
+            .publishReplay(1)
+            .refCount();
     }
 }

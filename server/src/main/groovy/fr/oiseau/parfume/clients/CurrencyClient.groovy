@@ -1,9 +1,6 @@
 package fr.oiseau.parfume.clients
 
 import groovy.transform.PackageScope
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 import rx.Observable
@@ -11,7 +8,8 @@ import rx.Observable
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-@PackageScope
+import static fr.oiseau.parfume.ArgumentPreconditions.notNull
+
 interface CbrClient {
     @GET("daily.aspx?")
     Observable<String> getEntirePageByDate(@Query("date_req") String date)
@@ -23,18 +21,19 @@ interface CurrencyClient {
 
 class CurrencyClientImpl implements CurrencyClient {
 
-    private @Lazy CbrClient cbrClient = {
-        Retrofit retrofit = new Retrofit.Builder()
-            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .baseUrl("https://www.cbr.ru/currency_base/")
-            .build();
+    @PackageScope
+    static final String DateFormat = "dd.MM.yyyy"
+    private final CbrClient cbrClient
 
-        retrofit.create(CbrClient)
-    } ()
+    CurrencyClientImpl(CbrClient cbrClient) {
+        this.cbrClient = notNull(cbrClient)
+    }
 
     Observable<String> getEntirePageByDate(LocalDate date) {
-        final formattedDate = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
+        if (date.isAfter(LocalDate.now())) {
+            return Observable.empty()
+        }
+        final formattedDate = date.format(DateTimeFormatter.ofPattern(DateFormat))
         cbrClient.getEntirePageByDate(formattedDate)
     }
 }

@@ -7,13 +7,9 @@ import fr.oiseau.parfume.transformers.PageGettingTransformer
 
 // Place your Spring DSL code here
 beans = {
-    currencyClient(CurrencyClientImpl) {
+//    currencyClient(CurrencyClientImpl) {
 //        someProperty = 42
 //        otherProperty = "blue"
 //        bookService = ref("bookService")
-    }
-    datesProvider(DatesProviderImpl) {}
-    htmlParser(HtmlCrawlerImpl) {}
-    pagesCacheManager(PagesCacheManager) {}
-    pageGettingTransformer(PageGettingTransformer) {}
+//    }
 }
