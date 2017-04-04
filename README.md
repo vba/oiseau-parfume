@@ -21,19 +21,19 @@
 
 ### Realisation details
 
-As requested I've used Grails 3 and Bootstrap to accomplish this exercise. As you can notice the controller part is made in asynchronous way, because it matters. Since Servlet API v3 we can do standard Java web application in unblocking way. Honestly speaking it's not the best manner to do non blocking apllication, more robust solutions can be done with `Vert.x` ou `Play 2 / Netty`. 
+As requested I've used Grails 3 and Bootstrap to accomplish this exercise. As you can notice the controller part is made in asynchronous way, because it matters. Since Servlet API v3 we can do standard java web applications in unblocking way. Honestly speaking it's not the best manner to do not blocking apllications, more robust solutions can be done with `Vert.x` ou `Play 2 / Netty`. 
 
 ##### Reactive Extensions
-Non blocking part is covered with `rxGroovy`, I didn't add any error handling because it CBR usage seems to be pretty straightforward, if needed it can be easily done with Reactive Extensions.
+Not blocking part is covered with `rxGroovy`, I didn't add any error handling because the CBR usage seems to be pretty straightforward, if needed it can be easily done with Reactive Extensions.
 
 ##### Caching
 All CBR requests are cached, I did not use any standard Grails/Spring component because it does not seem to work quite well with `rxGroovy` and honestly speaking I was looking for more flexible solution rather than configurable composition. That's why I have used `Guava` memory cache manager.
 
 ##### HTML Crawling
-This exercise requires to work with plain HTML page rather than web service. In true live I would strongly recommend you to use some 3rd party service like Yahoo or Google currency instead of crawling HTML. 
+This exercise requires to work with plain HTML page rather than with web service. In true live I would strongly recommend you to use some 3rd party service like Yahoo or Google currency instead of HTML crawling. 
 
 ##### Tests
-Tests are important ... Mostly all server parts are covered with unit tests. I did't write any functional/integration because I prefer to use external frameworks such cucumber for purposes of integration testing. Client part doesn't have a stong test coverage, lack of time.
+Tests are important ... Mostly all server parts are covered with unit tests. I did't write any functional/integration because I prefer to use external frameworks such cucumber for purposes of e2e or integration testing. Client part doesn't have a stong test coverage, lack of time.
 
 ##### Client
 Client part is covered with Angular2, TypeScript, RxJS and Bootstrap.
